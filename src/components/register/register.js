@@ -27,6 +27,7 @@ const Register = () => {
             axios.post("http://localhost:9002/register", user)
             .then( res => {
                 alert(res.data.message)
+                navigate("/login")
             })
         } else {
             alert("invlid input")

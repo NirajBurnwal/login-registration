@@ -8,17 +8,19 @@ import { useState } from 'react';
 
 function App() {
 
-  const [ user, setLoginUser] = useState({})
+  const [user, setLoginUser] = useState({})
   return (
     <div className="App">
       <Router>
         <Routes>
-        <Route exact path="/" element={<Homepage/>}/>
-          <Route exact path="/login" element={<Login/>}/>
-          <Route exact path="/register" element={<Register/>}/>
+          <Route exact path="/" element={
+              user && user._id ? <Homepage setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>
+            } />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/login" element={<Login setLoginUser={setLoginUser} />} />
         </Routes>
       </Router>
-      
+
     </div>
   );
 }
